@@ -18,5 +18,11 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    //return view('dashboard');
+    return redirect()->route('manage.index');
 })->name('dashboard');
+
+Route::group(['prefix' => 'manage'], function () {
+    Route::get('/', [\App\Http\Controllers\ManageController::class, 'index'])->name('manage.index');
+});
+
