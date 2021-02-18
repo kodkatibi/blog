@@ -15,18 +15,21 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@mobillium.com',
-            'password' => Hash::make('mobillium'),
-            'role' => 'admin'
-        ]);
+        User::firstOrCreate(
+            ['email' => 'admin@mobillium.com'],
+            [
+                'name' => 'Admin',
+                'email' => 'admin@mobillium.com',
+                'password' => Hash::make('mobillium'),
+                'role' => 'admin'
+            ]);
 
-        User::create([
-            'name' => 'Author',
-            'email' => 'writer1@mobillium.com',
-            'password' => Hash::make('mobillium'),
-            'role' => 'writer'
-        ]);
+        User::firstOrCreate(['email' => 'writer1@mobillium.com'],
+            [
+                'name' => 'Author',
+                'email' => 'writer1@mobillium.com',
+                'password' => Hash::make('mobillium'),
+                'role' => 'writer'
+            ]);
     }
 }
