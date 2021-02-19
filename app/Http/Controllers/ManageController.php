@@ -24,7 +24,7 @@ class ManageController extends Controller
 
     public function logout()
     {
-        Auth::logout();
+        Auth::guard('web')->logout();
         return redirect()->route('main.index');
     }
 }
