@@ -17,7 +17,7 @@ class ArticleResource extends JsonResource
 
         $rating = 0;
         if ($this->rating->count() > 0)
-            $rating = round($this->rating->sum('point') / $this->rating->count(),2);
+            $rating = round($this->rating->sum('point') / $this->rating->count(), 2);
         return [
             'title' => $this->title,
             'body' => $this->body,
