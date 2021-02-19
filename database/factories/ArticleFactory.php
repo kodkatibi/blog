@@ -31,6 +31,7 @@ class ArticleFactory extends Factory
             'body' => $body,
             'excerpt' => Str::limit($body, 50),
             'slug' => Str::slug($title.'-'.time()),
+            'status' => 'PENDING',
         ];
     }
 }
