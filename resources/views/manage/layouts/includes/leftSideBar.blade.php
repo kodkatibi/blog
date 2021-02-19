@@ -15,7 +15,7 @@
             <div class="main-menu-content">
                 <ul>
                     <li class="more-details">
-                        <a href="{{route('logout')}}"><i class="ti-layout-sidebar-left"></i>Logout</a>
+                        <a href="{{route('manage.logout')}}"><i class="ti-layout-sidebar-left"></i>manage.logout</a>
                     </li>
                 </ul>
             </div>

@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\HomeController::class,'index'])->name('main.index');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    //return view('dashboard');
-    return redirect()->route('manage.index');
-})->name('livewire');
+    return view('dashboard');
+})->name('dashboard');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -26,7 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/', [\App\Http\Controllers\ManageController::class, 'index'])
             ->name('manage.index');
         Route::get('/logout', [\App\Http\Controllers\ManageController::class, 'logout'])
-            ->name('logout');
+            ->name('manage.logout');
 
         Route::group(['prefix' => 'article'], function () {
             Route::get('/', [\App\Http\Controllers\ArticleController::class, 'index'])
