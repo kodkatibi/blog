@@ -15,14 +15,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('main.index');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/livewire', function () {
     //return view('dashboard');
-    return redirect()->route('manage.index');
-})->name('dashboard');
+   return redirect()->route('manage.index');
+})->name('livewire');
 
-Route::group(['prefix' => 'manage'], function () {
-    Route::get('/', [\App\Http\Controllers\ManageController::class, 'index'])->name('manage.index');
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::group(['prefix' => 'manage'], function () {
+        Route::get('/', [\App\Http\Controllers\ManageController::class, 'index'])->name('manage.index');
+        Route::get('/logout', [\App\Http\Controllers\ManageController::class, 'logout'])->name('logout');
+
+    });
+
 });
-

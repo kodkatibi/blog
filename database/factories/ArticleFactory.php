@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class ArticleFactory extends Factory
 {
@@ -22,12 +23,14 @@ class ArticleFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->company;
+        $body = $this->faker->text;
         return [
-            'user_id'=>User::inRandomOrder()->first()->id,
-            'title'=>$this->faker->paragraph,
-            'body'=>$this->faker->text,
-            'excerpt'=>$this->faker->text,
-            'slug'=>$this->faker->slug,
+            'user_id' => User::inRandomOrder()->first()->id,
+            'title' => $title,
+            'body' => $body,
+            'excerpt' => Str::limit($body, 50),
+            'slug' => Str::slug($title.'-'.time()),
         ];
     }
 }
