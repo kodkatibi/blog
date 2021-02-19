@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class,'index'])->name('main.index');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/livewire', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     //return view('dashboard');
     return redirect()->route('manage.index');
 })->name('livewire');
