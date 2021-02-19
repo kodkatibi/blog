@@ -23,8 +23,16 @@ class ArticleFactory extends Factory
      */
     public function definition()
     {
+        $paragraphs = rand(1, 5);
+        $i = 0;
+        $body = "";
+        while ($i < $paragraphs) {
+            $body .= "<p>" . $this->faker->paragraph(rand(6, 20)) . "</p>";
+            $i++;
+        }
+
         $title = $this->faker->company;
-        $body = $this->faker->text;
+
         return [
             'user_id' => User::inRandomOrder()->first()->id,
             'title' => $title,

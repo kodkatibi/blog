@@ -11,14 +11,16 @@ class Article extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $guarded = [];
+
     public function author()
     {
-        return $this->belongsTo('App\Models\User', 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function rating()
     {
-        return $this->hasMany('App\Models\Rate', 'article_id');
+        return $this->hasMany(Rate::class, 'article_id');
     }
 
 }

@@ -11,8 +11,10 @@ class Rate extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $guarded = [];
+
     public function article()
     {
-        return $this->belongsTo('App\Models\Article','article_id');
+        return $this->belongsTo('App\Models\Article', 'article_id');
     }
 }

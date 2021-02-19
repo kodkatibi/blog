@@ -19,11 +19,11 @@ class CreateArticlesTable extends Migration
             $table->string('lang')->default('tr');
             $table->string('title');
             $table->string('seo_title')->nullable();
-            $table->text('excerpt');
+            $table->text('excerpt')->nullable();
             $table->text('body');
             $table->string('image')->nullable();
             $table->string('slug')->unique();
-            $table->enum('status', ['PUBLISHED', 'DRAFT', 'PENDING'])->default('DRAFT');
+            $table->enum('status', ['PUBLISHED', 'REJECT', 'PENDING'])->default('PENDING');
             $table->softDeletes();
             $table->timestamps();
         });
