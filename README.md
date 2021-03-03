@@ -3,6 +3,8 @@
 ### Get Clone
 `git clone https://github.com/kodkatibi/blog.git`
 
+`cd blog`
+
 ##Configuration
 
 make an .env file from .env.example and insert mysql credential. then run 
